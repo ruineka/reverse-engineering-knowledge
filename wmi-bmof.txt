@@ -1,0 +1,12 @@
+There is very little documention on how to get WMI information on Linux so here are some rough steps you will need to take.
+
+# Modeprobe wmi-bmof to show the WMI devices at /sys/bus/wmi/devices/*
+sudo modprobe wmi-bmof
+
+# Clone the bmf decoder tools repo and build them
+git clone https://github.com/pali/bmfdec.git
+cd bmfdec
+make
+
+# We will need sudo to run `bmf2mof` and give it a path to a wmi device
+sudo ./bmf2mof /sys/bus/wmi/devices/05901221-D566-11D1-B2F0-00A0C9062910/bmof
